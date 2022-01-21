@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -28,6 +29,10 @@ class ArticleController extends Controller
         } else {
             Article::create($data);
         }
+    }
+
+    public function showArticle() {
+        return view('pages.user.created_article', ['data' => Article::latest()->first()]);
     }
 
 }
